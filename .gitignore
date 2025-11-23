@@ -1,0 +1,10 @@
+# Ignore build artifacts
+/build/
+
+# Ignore IDE files and temporary files
+/.idea/
+*.swp
+*~
+
+# Ignore log/data files
+/data/
