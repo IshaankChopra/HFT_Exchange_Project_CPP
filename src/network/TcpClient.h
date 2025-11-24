@@ -55,7 +55,7 @@ public:
 
         ssize_t sent = send(sockFd, data, size, 0);
         if (sent < 0) {
-            perror("failed to send order");
+            perror("Failed to send order");
         }
     }
 
