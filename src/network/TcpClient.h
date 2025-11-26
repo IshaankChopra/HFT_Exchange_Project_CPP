@@ -5,6 +5,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <netinet/tcp.h>
+#include <stdexcept>
 #include <cstring>
 #include <string>
 #include <iostream>
@@ -21,8 +22,7 @@ public:
     bool connectToExchange(const std::string& ip, int port) {
         sockFd = socket(AF_INET, SOCK_STREAM, 0);
         if (sockFd < 0) {
-            perror("TCP socket creation failed");
-            return false;
+            throw std::runtime_error(std::string("TCP socket creation failed: ") + strerror(errno));
         }
 
         serverAddr.sin_family = AF_INET;
