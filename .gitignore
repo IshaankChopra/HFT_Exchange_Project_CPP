@@ -1,5 +1,6 @@
 # Ignore build artifacts
 /build/
+/cmake-build-debug/
 
 # Ignore IDE files and temporary files
 /.idea/
