@@ -28,7 +28,7 @@ public:
         }
         addr.sin_port = htons(port);
 
-        int loop = 0;
+        int loop = 1;
         if (setsockopt(sockFd, IPPROTO_IP, IP_MULTICAST_LOOP, (char*)&loop, sizeof(loop)) < 0) {
             perror("Setting IP_MULTICAST_LOOP error");
             close(sockFd);
