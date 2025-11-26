@@ -6,6 +6,9 @@
 #define MCAST_GRP_SCH "239.0.0.1"
 #define MCAST_GRP_SCS "239.0.0.2"
 #define MCAST_PORT 30001
+#define EXCHANGE_IP "127.0.0.1"
+#define EXCHANGE_PORT_SCH 8080
+#define EXCHANGE_PORT_SCS 8081;
 
 #pragma pack(push, 1)
 
