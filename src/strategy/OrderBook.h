@@ -54,6 +54,10 @@ public:
     }
 private:
     void handleNew(const MarketUpdate& u) {
+        if (orderMap.find(u.orderId) != orderMap.end()) {
+            return;
+        }
+
         orderMap[u.orderId] = {u.price, u.quantity, u.side};
         if (u.side == 'B') {
             bids[u.price] += u.quantity;
