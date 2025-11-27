@@ -8,7 +8,7 @@
 int main(int argc, char* argv[]) {
 
     // Requirement: "Two market data injectors... runs as a separate process"
-    // Usage: ./market_injector data/SCH.log 239.0.0.1
+    // Usage: ./market_injector data/SCH_test.log 239.0.0.1
 
     if (argc != 3) {
         std::cerr << "Usage: " << argv[0] << " <logfile> <multicast_ip>" << std::endl;

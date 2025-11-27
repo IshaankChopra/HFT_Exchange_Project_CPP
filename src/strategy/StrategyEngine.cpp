@@ -15,9 +15,9 @@ void StrategyEngine::onMarketData(const MarketUpdate &update) {
     double bestAsk = orderBook.getBestAsk();
     if (bestAsk > 0 && bestAsk < 108.00) {
 
-        if (currentPosition >= MAX_POSITION_LIMIT) {
-            return;
-        }
+        // if (currentPosition >= MAX_POSITION_LIMIT) {
+        //     return;
+        // }
 
         OrderRequest order;
         // Generate a UNIQUE ID for this order
