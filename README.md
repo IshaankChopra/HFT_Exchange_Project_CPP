@@ -106,10 +106,7 @@ To stop the simulation early, press `Ctrl+C`. The script handles cleanup and kil
 
 The Strategy Engine outputs latency metrics to stdout for analysis. Note that logging happens after the critical trade path to avoid blocking I/O penalties.
 
-```
->>> BUY @ 107.77 (ID: 1) | Latency: 4200 ns
->>> SELL @ 106.50 (ID: 2) | Latency: 3800 ns
-```
+<img width="546" height="790" alt="Screenshot 2025-11-27 at 11 25 16 PM" src="https://github.com/user-attachments/assets/cc839e85-5a2c-4adb-ab96-848327366ed2" />
 
 **Latency Definition:** The time delta between the start of packet processing (Tick) and the completion of the socket write (Trade).
 
