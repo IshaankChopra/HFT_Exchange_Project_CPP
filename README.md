@@ -1,6 +1,6 @@
 # High-Frequency Trading (HFT) Simulation Framework
 
-A low-latency trading system simulation implemented in Modern C++ (C++17). This project simulates a complete trading loop—from parsing raw market data events to executing trades on a mock exchange—with a focus on **minimizing and measuring tick-to-trade latency**.
+A low-latency trading system simulation implemented in Modern C++ (C++17). This project simulates a complete trading loop-from parsing raw market data events to executing trades on a mock exchange with a focus on **minimizing and measuring tick-to-trade latency**.
 
 ## 🚀 Key Features
 
