@@ -14,7 +14,7 @@ private:
     TcpClient* client; // Pointer to the connection used for execution
     std::atomic<int64_t> orderIdCounter;
     int currentPosition;
-    const int MAX_POSITION_LIMIT = 5; // Max shares we can hold
+    const int MAX_POSITION_LIMIT = 1000; // Max shares we can hold
 
 public:
     // Dependency Injection: We pass the client in, rather than creating it inside

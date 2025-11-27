@@ -29,6 +29,20 @@ public:
         }
     }
 
+    void consumeLiquidity(double price, int32_t quantity, char side) {
+        if (side == 'B') {
+            if (asks.find(price) != asks.end()) {
+                asks[price] -= quantity;
+                if (asks[price] <= 0) asks.erase(price);
+            }
+        }else {
+            if (bids.find(price) != bids.end()) {
+                bids[price] -= quantity;
+                if (bids[price] <= 0) bids.erase(price);
+            }
+        }
+    }
+
     double getBestBid() const {
         if (bids.empty()) return -1.0;
         return bids.begin()->first;

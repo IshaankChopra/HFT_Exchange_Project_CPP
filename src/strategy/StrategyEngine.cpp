@@ -11,8 +11,8 @@ StrategyEngine::StrategyEngine(const std::string &sym, TcpClient *cli)
 void StrategyEngine::onMarketData(const MarketUpdate &update) {
 
     orderBook.processUpdate(update);
-    double bestAsk = orderBook.getBestAsk();
 
+    double bestAsk = orderBook.getBestAsk();
     if (bestAsk > 0 && bestAsk < 108.00) {
 
         if (currentPosition >= MAX_POSITION_LIMIT) {
@@ -34,6 +34,7 @@ void StrategyEngine::onMarketData(const MarketUpdate &update) {
         if (client) {
             client->sendOrder(&order, sizeof(OrderRequest));
             currentPosition += order.quantity;
+            orderBook.consumeLiquidity(bestAsk, order.quantity, 'B');
             std::cout << " >>> [" << symbol << "] STRATEGY SIGNAL: BUY @ " << bestAsk
                       << " (Order ID: " << order.orderId << ")" << std::endl;
         }
