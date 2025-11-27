@@ -10,6 +10,9 @@ StrategyEngine::StrategyEngine(const std::string &sym, TcpClient *cli)
 
 void StrategyEngine::onMarketData(const MarketUpdate &update) {
 
+    // [MEASURE] 1. START TIMER
+    auto start_time = std::chrono::steady_clock::now();
+
     orderBook.processUpdate(update);
 
     double bestAsk = orderBook.getBestAsk();
@@ -32,10 +35,14 @@ void StrategyEngine::onMarketData(const MarketUpdate &update) {
 
         if (client) {
             client->sendOrder(&order, sizeof(OrderRequest));
+            // [MEASURE] 2. STOP TIMER
+            auto end_time = std::chrono::steady_clock::now();
+            long latency = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time).count();
             // currentPosition += order.quantity;
             orderBook.consumeLiquidity(bestAsk, order.quantity, 'B');
             std::cout << ">>> BUY @ " << bestAsk
-                      << " (Order ID: " << order.orderId << ")" << std::endl;
+                      << " (Order ID: " << order.orderId << ")"
+                      << " | Latency: " << latency << " ns" << std::endl;
         }
     }
 
@@ -51,11 +58,15 @@ void StrategyEngine::onMarketData(const MarketUpdate &update) {
 
         if (client) {
             client->sendOrder(&order, sizeof(OrderRequest));
+            // [MEASURE] 2. STOP TIMER
+            auto end_time = std::chrono::steady_clock::now();
+            long latency = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - start_time).count();
             // currentPosition += order.quantity;
             orderBook.consumeLiquidity(bestBid, order.quantity, 'S');
 
-            std::cout << ">>> SELL @ " << bestAsk
-                      << " (Order ID: " << order.orderId << ")" << std::endl;
+            std::cout << ">>> SELL @ " << bestBid
+                      << " (Order ID: " << order.orderId << ")"
+                      << " | Latency: " << latency << " ns" << std::endl;
         }
     }
 }
