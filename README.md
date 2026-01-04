@@ -10,7 +10,7 @@ This is a low-latency trading system simulation implemented in Modern C++ (C++17
 * **Idempotency & Arbitration:** The Order Book logic includes deduplication checks to handle multicast loopback echoes and redundant network feeds without data corruption.
 * **Kernel Optimizations:** Built with `-O3` and configured with `TCP_NODELAY` (Nagle's Algorithm disabled) for immediate packet transmission.
 
-## 🏗 Architecture
+## Architecture
 
 The system consists of three decoupled processes communicating over the local loopback network:
 
