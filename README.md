@@ -1,8 +1,8 @@
 # High-Frequency Trading (HFT) Simulation Framework
 
-A low-latency trading system simulation implemented in Modern C++ (C++17). This project simulates a complete trading loop-from parsing raw market data events to executing trades on a mock exchange with a focus on **minimizing and measuring tick-to-trade latency**.
+This is a low-latency trading system simulation implemented in Modern C++ (C++17). This project simulates a complete trading loop-from parsing raw market data events to executing trades on a mock exchange with a focus on **minimizing and measuring tick-to-trade latency**.
 
-## 🚀 Key Features
+## Key Features
 
 * **Dual-Protocol Architecture:** Uses **UDP Multicast** for high-throughput market data feeds and **TCP** for reliable order execution.
 * **Optimistic Execution:** The Strategy Engine implements "Optimistic Execution," immediately consuming liquidity from its internal Order Book upon sending an order to minimize perceived latency and prevent double-execution during high-speed replays.
@@ -34,7 +34,7 @@ graph LR
 
 ---
 
-## 🛠 Prerequisites
+## Prerequisites
 
 * **OS:** Linux (Ubuntu 20.04/22.04 LTS recommended)
 * **Compiler:** GCC 9+ or Clang (Must support C++17)
@@ -42,7 +42,7 @@ graph LR
 
 ---
 
-## ⚡ Quick Start
+## Quick Start
 
 ### 1. Clone & Prepare Data
 
@@ -102,7 +102,7 @@ To stop the simulation early, press `Ctrl+C`. The script handles cleanup and kil
 
 ---
 
-## 📊 Performance Metrics
+## Performance Metrics
 
 The Strategy Engine outputs latency metrics to stdout for analysis. Note that logging happens after the critical trade path to avoid blocking I/O penalties.
 
@@ -114,7 +114,7 @@ The Strategy Engine outputs latency metrics to stdout for analysis. Note that lo
 
 ---
 
-## 🧠 Design Decisions
+## Design Decisions
 
 ### Why `std::map` for the Order Book?
 
@@ -131,10 +131,9 @@ The simulation uses **Optimistic Execution**, meaning the strategy decrements av
 
 ---
 
-## 🔮 Future Work
+## Future Work
 
 * Replace `std::map` with flat arrays for cache-efficient `O(1)` lookups.
-* Explore kernel bypass (e.g., DPDK) for ultra-low latency packet handling.
 * Implement multi-threaded order matching and risk checks.
 * Add support for multiple instruments and cross-asset strategies.
 
@@ -156,7 +155,5 @@ add_compile_options(-O3 -march=native -pipe)
 
 ### Safety & Simulation Notes
 
-* **Do not** use this simulation code in production markets. It's designed for research, benchmarking, and learning only.
-* Ensure that any live-market connectivity, if later added, follows strict compliance and risk-management controls.
-
+* This simulation code is **not** to be used in production markets. It's designed for research, benchmarking, and learning purposes only.
 ---
