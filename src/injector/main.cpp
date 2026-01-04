@@ -25,11 +25,10 @@ int main(int argc, char* argv[]) {
 
     MarketUpdate update;
     long long messageCount = 0;
-
     while (parser.parseNext(update)) {
         sender.send(&update, sizeof(MarketUpdate));
         messageCount++;
-        // TODO: Throttle speed?
+        // OPTIONAL: Throttle speed?
         // In real life, we sleep to match the timestamp diffs.
         // For this test, we blast as fast as possible to stress test the Strategy.
         // If Strategy crashes, uncomment the line below:
