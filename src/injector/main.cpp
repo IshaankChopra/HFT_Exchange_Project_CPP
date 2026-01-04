@@ -29,10 +29,10 @@ int main(int argc, char* argv[]) {
     while (parser.parseNext(update)) {
         sender.send(&update, sizeof(MarketUpdate));
         messageCount++;
-        // OPTIONAL: Throttle speed?
-        // In real life, you might sleep to match the timestamp diffs.
+        // TODO: Throttle speed?
+        // In real life, we sleep to match the timestamp diffs.
         // For this test, we blast as fast as possible to stress test the Strategy.
-        // If your Strategy crashes, uncomment the line below:
+        // If Strategy crashes, uncomment the line below:
         // std::this_thread::sleep_for(std::chrono::microseconds(1));
     }
 
